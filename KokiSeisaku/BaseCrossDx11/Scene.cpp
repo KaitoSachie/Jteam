@@ -16,7 +16,7 @@ namespace basecross{
 	void Scene::OnCreate(){
 		try {
 			//最初のアクティブステージの設定
-			ResetActiveStage<EditorStage>();
+			ResetActiveStage<GameStage>();
 		}
 		catch (...) {
 			throw;

@@ -74,27 +74,27 @@ namespace basecross {
 		DrawComp->SetTextureResource(L"SKY_TX");
 	}
 
-	////追いかけるオブジェクトの作成
-	//void GameStage::CreateSeekObject() {
-	//	//オブジェクトのグループを作成する
-	//	auto Group = CreateSharedObjectGroup(L"ObjectGroup");
-	//	//配列の初期化
-	//	vector<Vector3> Vec = {
-	//		{ 0, 0.125f, 10.0f },
-	//		{ 10.0f, 0.125f, 0.0f },
-	//		{ -10.0f, 0.125f, 0.0f },
-	//		{ 0, 0.125f, -10.0f },
-	//	};
+	//追いかけるオブジェクトの作成
+	void GameStage::CreateSeekObject() {
+		//オブジェクトのグループを作成する
+		auto Group = CreateSharedObjectGroup(L"ObjectGroup");
+		//配列の初期化
+		vector<Vector3> Vec = {
+			{ 0, 0.125f, 10.0f },
+			{ 10.0f, 0.125f, 0.0f },
+			{ -10.0f, 0.125f, 0.0f },
+			{ 0, 0.125f, -10.0f },
+		};
 
-	//	//配置オブジェクトの作成
-	//	//ナンバースクエアの作成
-	//	for (size_t count = 0; count < Vec.size(); count++) {
-	//		auto Ptr = AddGameObject<SeekObject>(Vec[count]);
-	//		//ナンバースクエアを作成して関連させる
-	//		AddGameObject<NumberSquare>(Ptr, count);
-	//	}
+		//配置オブジェクトの作成
+		//ナンバースクエアの作成
+		for (size_t count = 0; count < Vec.size(); count++) {
+			auto Ptr = AddGameObject<SeekObject>(Vec[count]);
+			//ナンバースクエアを作成して関連させる
+			AddGameObject<NumberSquare>(Ptr, count);
+		}
 
-	//}
+	}
 
 
 
@@ -143,82 +143,82 @@ namespace basecross {
 		SetSharedGameObject(L"Player", PlayerPtr);
 	}
 
-	////上下移動しているボックスの作成
-	//void GameStage::CreateMoveBox() {
-	//	CreateSharedObjectGroup(L"MoveBox");
-	//	AddGameObject<MoveBox>(
-	//		Vector3(5.0f, 0.5f, 5.0f),
-	//		Vector3(0.0f, 0.0f, 0.0f),
-	//		Vector3(0.0f, -0.5f, 20.0f)
-	//		);
-	//}
+	//上下移動しているボックスの作成
+	void GameStage::CreateMoveBox() {
+		CreateSharedObjectGroup(L"MoveBox");
+		AddGameObject<MoveBox>(
+			Vector3(5.0f, 0.5f, 5.0f),
+			Vector3(0.0f, 0.0f, 0.0f),
+			Vector3(0.0f, -0.5f, 20.0f)
+			);
+	}
 
-	////ヒットする球体の作成
-	//void GameStage::CreateSphere() {
-	//	//配列の初期化
-	//	vector<Vector3> Vec = {
-	//		{ 20.0f, 0, 25.0f },
-	//		{ 20.0f, 0, 0.0f },
-	//	};
-	//	//配置オブジェクトの作成
-	//	for (auto v : Vec) {
-	//		AddGameObject<SphereObject>(v);
-	//	}
-	//}
+	//ヒットする球体の作成
+	void GameStage::CreateSphere() {
+		//配列の初期化
+		vector<Vector3> Vec = {
+			{ 20.0f, 0, 25.0f },
+			{ 20.0f, 0, 0.0f },
+		};
+		//配置オブジェクトの作成
+		for (auto v : Vec) {
+			AddGameObject<SphereObject>(v);
+		}
+	}
 
-	////半透明のスプライト作成
-	//void GameStage::CreateTraceSprite() {
-	//	AddGameObject<TraceSprite>( true,
-	//		Vector2(200.0f, 200.0f), Vector2(-500.0f, -280.0f));
-	//}
-
-
-	////壁模様のスプライト作成
-	//void GameStage::CreateWallSprite() {
-	//	AddGameObject<WallSprite>(L"WALL_TX", false,
-	//		Vector2(200.0f, 200.0f), Vector2(500.0f, -280.0f));
-	//}
+	//半透明のスプライト作成
+	void GameStage::CreateTraceSprite() {
+		AddGameObject<TraceSprite>( true,
+			Vector2(200.0f, 200.0f), Vector2(-500.0f, -280.0f));
+	}
 
 
-	////スクロールするスプライト作成
-	//void GameStage::CreateScrollSprite() {
-	//	AddGameObject<ScrollSprite>(L"TRACE_TX",true,
-	//		Vector2(160.0f, 40.0f),Vector2(500.0f,-280.0f));
-	//}
-
-	////左上で回転する立方体
-	//void GameStage::CreateRollingCube() {
-	//	Quaternion Qt(Vector3(0.0f, 0.0, 1.0), XM_PIDIV4);
-	//	AddGameObject<RollingCube>(true,
-	//		Vector3(64.0f,64.0f,64.0f), 
-	//		Qt,
-	//		Vector3(-440,320,100.0f)
-	//		);
-
-	//}
-
-	////形状が変わる球体
-	//void GameStage::CreateTransSphere() {
-	//	AddGameObject<TransSphere>(
-	//		L"WALL_TX",
-	//		false,
-	//		Vector3(1.0f, 1.0f, 1.0f),
-	//		Quaternion(),
-	//		Vector3(10.0f, 2.0f, 10.0f)
-	//		);
-	//}
+	//壁模様のスプライト作成
+	void GameStage::CreateWallSprite() {
+		AddGameObject<WallSprite>(L"WALL_TX", false,
+			Vector2(200.0f, 200.0f), Vector2(500.0f, -280.0f));
+	}
 
 
+	//スクロールするスプライト作成
+	void GameStage::CreateScrollSprite() {
+		AddGameObject<ScrollSprite>(L"TRACE_TX",true,
+			Vector2(160.0f, 40.0f),Vector2(500.0f,-280.0f));
+	}
+
+	//左上で回転する立方体
+	void GameStage::CreateRollingCube() {
+		Quaternion Qt(Vector3(0.0f, 0.0, 1.0), XM_PIDIV4);
+		AddGameObject<RollingCube>(true,
+			Vector3(64.0f,64.0f,64.0f), 
+			Qt,
+			Vector3(-440,320,100.0f)
+			);
+
+	}
+
+	//形状が変わる球体
+	void GameStage::CreateTransSphere() {
+		AddGameObject<TransSphere>(
+			L"WALL_TX",
+			false,
+			Vector3(1.0f, 1.0f, 1.0f),
+			Quaternion(),
+			Vector3(10.0f, 2.0f, 10.0f)
+			);
+	}
 
 
-	////スパークの作成
-	//void GameStage::CreateSpark() {
-	//	auto MultiSparkPtr = AddGameObject<MultiSpark>();
-	//	//シェア配列にスパークを追加
-	//	SetSharedGameObject(L"MultiSpark", MultiSparkPtr);
-	//	//エフェクトはZバッファを使用する
-	//	GetParticleManager()->SetZBufferUse(true);
-	//}
+
+
+	//スパークの作成
+	void GameStage::CreateSpark() {
+		auto MultiSparkPtr = AddGameObject<MultiSpark>();
+		//シェア配列にスパークを追加
+		SetSharedGameObject(L"MultiSpark", MultiSparkPtr);
+		//エフェクトはZバッファを使用する
+		GetParticleManager()->SetZBufferUse(true);
+	}
 
 
 
@@ -233,24 +233,24 @@ namespace basecross {
 			CreatePlate();
 			//固定のボックスの作成
 			CreateFixedBox();
-			////上下移動しているボックスの作成
-			//CreateMoveBox();
-			////球体作成
-			//CreateSphere();
-			////追いかけるオブジェクトの作成
-			//CreateSeekObject();
-			////半透明のスプライト作成
-			//CreateTraceSprite();
-			////壁模様のスプライト作成
-			//CreateWallSprite();
-			////スクロールするスプライト作成
-			//CreateScrollSprite();
-			////左上で回転する立方体
-			//CreateRollingCube();
-			////左上で形状が変わる球体
-			//CreateTransSphere();
-			////スパークの作成
-			//CreateSpark();
+			//上下移動しているボックスの作成
+			CreateMoveBox();
+			//球体作成
+			CreateSphere();
+			//追いかけるオブジェクトの作成
+			CreateSeekObject();
+			//半透明のスプライト作成
+			CreateTraceSprite();
+			//壁模様のスプライト作成
+			CreateWallSprite();
+			//スクロールするスプライト作成
+			CreateScrollSprite();
+			//左上で回転する立方体
+			CreateRollingCube();
+			//左上で形状が変わる球体
+			CreateTransSphere();
+			//スパークの作成
+			CreateSpark();
 			//プレーヤーの作成
 			CreatePlayer();
 		}

@@ -78,9 +78,6 @@
     <ClInclude Include="Common\StringComponents.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="EditorStage.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="BaseCrossDx11.rc">
@@ -140,9 +137,6 @@
     </ClCompile>
     <ClCompile Include="Common\StringComponents.cpp">
       <Filter>Common</Filter>
-    </ClCompile>
-    <ClCompile Include="EditorStage.cpp">
-      <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
