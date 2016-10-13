@@ -113,11 +113,11 @@ namespace basecross{
 	}
 
 	void Player::OnCollision(vector<shared_ptr<GameObject>>& OtherVec) {
-		//スパークの放出
-		auto PtrSpark = GetStage()->GetSharedGameObject<MultiSpark>(L"MultiSpark", false);
-		if (PtrSpark) {
-			PtrSpark->InsertSpark(GetComponent<Transform>()->GetPosition());
-		}
+		////スパークの放出
+		//auto PtrSpark = GetStage()->GetSharedGameObject<MultiSpark>(L"MultiSpark", false);
+		//if (PtrSpark) {
+		//	PtrSpark->InsertSpark(GetComponent<Transform>()->GetPosition());
+		//}
 		if (GetStateMachine()->GetCurrentState() == JumpState::Instance()) {
 			GetStateMachine()->ChangeState(DefaultState::Instance());
 		}
@@ -125,77 +125,77 @@ namespace basecross{
 	//ターンの最終更新時
 	void Player::OnLastUpdate() {
 
-		//文字列表示
-		auto fps = App::GetApp()->GetStepTimer().GetFramesPerSecond();
-		wstring FPS(L"FPS: ");
-		FPS += Util::UintToWStr(fps);
-		FPS += L"\n";
+		////文字列表示
+		//auto fps = App::GetApp()->GetStepTimer().GetFramesPerSecond();
+		//wstring FPS(L"FPS: ");
+		//FPS += Util::UintToWStr(fps);
+		//FPS += L"\n";
 
 
-		auto Pos = GetComponent<Transform>()->GetWorldMatrix().PosInMatrix();
-		wstring PositionStr(L"Position:\t");
-		PositionStr += L"X=" + Util::FloatToWStr(Pos.x, 6, Util::FloatModify::Fixed) + L",\t";
-		PositionStr += L"Y=" + Util::FloatToWStr(Pos.y, 6, Util::FloatModify::Fixed) + L",\t";
-		PositionStr += L"Z=" + Util::FloatToWStr(Pos.z, 6, Util::FloatModify::Fixed) + L"\n";
+		//auto Pos = GetComponent<Transform>()->GetWorldMatrix().PosInMatrix();
+		//wstring PositionStr(L"Position:\t");
+		//PositionStr += L"X=" + Util::FloatToWStr(Pos.x, 6, Util::FloatModify::Fixed) + L",\t";
+		//PositionStr += L"Y=" + Util::FloatToWStr(Pos.y, 6, Util::FloatModify::Fixed) + L",\t";
+		//PositionStr += L"Z=" + Util::FloatToWStr(Pos.z, 6, Util::FloatModify::Fixed) + L"\n";
 
-		wstring RididStr(L"Velocity:\t");
-		auto Velocity = GetComponent<Rigidbody>()->GetVelocity();
-		RididStr += L"X=" + Util::FloatToWStr(Velocity.x, 6, Util::FloatModify::Fixed) + L",\t";
-		RididStr += L"Y=" + Util::FloatToWStr(Velocity.y, 6, Util::FloatModify::Fixed) + L",\t";
-		RididStr += L"Z=" + Util::FloatToWStr(Velocity.z, 6, Util::FloatModify::Fixed) + L"\n";
+		//wstring RididStr(L"Velocity:\t");
+		//auto Velocity = GetComponent<Rigidbody>()->GetVelocity();
+		//RididStr += L"X=" + Util::FloatToWStr(Velocity.x, 6, Util::FloatModify::Fixed) + L",\t";
+		//RididStr += L"Y=" + Util::FloatToWStr(Velocity.y, 6, Util::FloatModify::Fixed) + L",\t";
+		//RididStr += L"Z=" + Util::FloatToWStr(Velocity.z, 6, Util::FloatModify::Fixed) + L"\n";
 
-		wstring GravStr(L"Gravity:\t");
-		auto Grav = GetComponent<Gravity>()->GetGravity();
-		GravStr += L"X=" + Util::FloatToWStr(Grav.x, 6, Util::FloatModify::Fixed) + L",\t";
-		GravStr += L"Y=" + Util::FloatToWStr(Grav.y, 6, Util::FloatModify::Fixed) + L",\t";
-		GravStr += L"Z=" + Util::FloatToWStr(Grav.z, 6, Util::FloatModify::Fixed) + L"\n";
+		//wstring GravStr(L"Gravity:\t");
+		//auto Grav = GetComponent<Gravity>()->GetGravity();
+		//GravStr += L"X=" + Util::FloatToWStr(Grav.x, 6, Util::FloatModify::Fixed) + L",\t";
+		//GravStr += L"Y=" + Util::FloatToWStr(Grav.y, 6, Util::FloatModify::Fixed) + L",\t";
+		//GravStr += L"Z=" + Util::FloatToWStr(Grav.z, 6, Util::FloatModify::Fixed) + L"\n";
 
 
-		wstring GravityStr(L"GravityVelocity:\t");
-		auto GravityVelocity = GetComponent<Gravity>()->GetGravityVelocity();
-		GravityStr += L"X=" + Util::FloatToWStr(GravityVelocity.x, 6, Util::FloatModify::Fixed) + L",\t";
-		GravityStr += L"Y=" + Util::FloatToWStr(GravityVelocity.y, 6, Util::FloatModify::Fixed) + L",\t";
-		GravityStr += L"Z=" + Util::FloatToWStr(GravityVelocity.z, 6, Util::FloatModify::Fixed) + L"\n";
+		//wstring GravityStr(L"GravityVelocity:\t");
+		//auto GravityVelocity = GetComponent<Gravity>()->GetGravityVelocity();
+		//GravityStr += L"X=" + Util::FloatToWStr(GravityVelocity.x, 6, Util::FloatModify::Fixed) + L",\t";
+		//GravityStr += L"Y=" + Util::FloatToWStr(GravityVelocity.y, 6, Util::FloatModify::Fixed) + L",\t";
+		//GravityStr += L"Z=" + Util::FloatToWStr(GravityVelocity.z, 6, Util::FloatModify::Fixed) + L"\n";
 
-		wstring HitObjectStr(L"HitObject: ");
-		if (GetComponent<Collision>()->GetHitObjectVec().size() > 0) {
-			for (auto&v : GetComponent<Collision>()->GetHitObjectVec()) {
-				HitObjectStr += Util::UintToWStr((UINT)v.get()) + L",";
-			}
-			HitObjectStr += L"\n";
-		}
-		else {
-			HitObjectStr += L"NULL\n";
-		}
-		wstring statestr = L"JUMP: ";
-		if (m_StateMachine->GetCurrentState() == DefaultState::Instance()) {
-			statestr = L"DEFAULT\n";
-		}
-		wstring str = FPS + PositionStr + RididStr + GravStr + GravityStr + HitObjectStr + statestr;
-		//文字列をつける
-		auto PtrString = GetComponent<StringSprite>();
-		PtrString->SetText(str);
+		//wstring HitObjectStr(L"HitObject: ");
+		//if (GetComponent<Collision>()->GetHitObjectVec().size() > 0) {
+		//	for (auto&v : GetComponent<Collision>()->GetHitObjectVec()) {
+		//		HitObjectStr += Util::UintToWStr((UINT)v.get()) + L",";
+		//	}
+		//	HitObjectStr += L"\n";
+		//}
+		//else {
+		//	HitObjectStr += L"NULL\n";
+		//}
+		//wstring statestr = L"JUMP: ";
+		//if (m_StateMachine->GetCurrentState() == DefaultState::Instance()) {
+		//	statestr = L"DEFAULT\n";
+		//}
+		//wstring str = FPS + PositionStr + RididStr + GravStr + GravityStr + HitObjectStr + statestr;
+		////文字列をつける
+		//auto PtrString = GetComponent<StringSprite>();
+		//PtrString->SetText(str);
 
-		auto PtrCol = GetComponent<CollisionSphere>();
-		auto Group = GetStage()->GetSharedObjectGroup(L"MoveBox");
-		auto GVec = Group->GetGroupVector();
-		auto PtrTrans = GetComponent<Transform>();
-		for (auto& v : GVec) {
-			auto shptr = dynamic_pointer_cast<MoveBox>(v.lock());
-			if (shptr) {
-				auto ParCol = shptr->GetComponent<CollisionObb>();
-				if (PtrCol->OnObjectTest(ParCol)) {
-					//移動ボックスに乗ってる
-					auto ParVelo = shptr->GetComponent<Action>()->GetVelocity();
-					float ElapsedTime = App::GetApp()->GetElapsedTime();
-					ParVelo *= ElapsedTime;
-					auto Pos = PtrTrans->GetPosition();
-					Pos += ParVelo;
-					PtrTrans->SetPosition(Pos);
-					return;
-				}
-			}
-		}
+		//auto PtrCol = GetComponent<CollisionSphere>();
+		//auto Group = GetStage()->GetSharedObjectGroup(L"MoveBox");
+		//auto GVec = Group->GetGroupVector();
+		//auto PtrTrans = GetComponent<Transform>();
+		//for (auto& v : GVec) {
+		//	auto shptr = dynamic_pointer_cast<MoveBox>(v.lock());
+		//	if (shptr) {
+		//		auto ParCol = shptr->GetComponent<CollisionObb>();
+		//		if (PtrCol->OnObjectTest(ParCol)) {
+		//			//移動ボックスに乗ってる
+		//			auto ParVelo = shptr->GetComponent<Action>()->GetVelocity();
+		//			float ElapsedTime = App::GetApp()->GetElapsedTime();
+		//			ParVelo *= ElapsedTime;
+		//			auto Pos = PtrTrans->GetPosition();
+		//			Pos += ParVelo;
+		//			PtrTrans->SetPosition(Pos);
+		//			return;
+		//		}
+		//	}
+		//}
 	}
 
 	//モーションを実装する関数群
